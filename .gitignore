@@ -1,0 +1,4 @@
+*.xlsx
+api_token.json
+gmail_account_username_pw.txt
+__pycache__
