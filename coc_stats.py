@@ -178,19 +178,24 @@ def main():
     """
     Main script
     """
+    print('Beginning program...')
     # get token and clan_tag from json
     token, clan_tag_str = read_json()
     clan_tag_str = check_tag(clan_tag_str, 'clan')
+    print('json file successfully read')
 
     # determine clan tag matchups
     api = cocapi(token, clan_tag_str)
     rounds = api.clan_leaguegroup()['rounds']
+    print('API connection established')
     
     # get war tags that clan was in
     war_list = war_matchups(api, rounds, clan_tag_str)
+    print('CWL matchups gathered')
 
     # produce dataframe from war_list and performing api calls
     df = war_list_iterator(api, war_list)
+    print('API requests received and transformed')
 
     # save to excel
     clan_name = api.clan_tag()['name']
